@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{EDBEA1DF-A563-490D-B19D-D48E3ECB72A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseService", "DatabaseService\DatabaseService.csproj", "{C6E82967-0B92-45F7-B489-5F73E4F93A90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApp", "DesktopApp\DesktopApp.csproj", "{9805CB25-5FE1-4E61-B159-242A03E3AF9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{EDBEA1DF-A563-490D-B19D-D48E3ECB72A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDBEA1DF-A563-490D-B19D-D48E3ECB72A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDBEA1DF-A563-490D-B19D-D48E3ECB72A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6E82967-0B92-45F7-B489-5F73E4F93A90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6E82967-0B92-45F7-B489-5F73E4F93A90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6E82967-0B92-45F7-B489-5F73E4F93A90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6E82967-0B92-45F7-B489-5F73E4F93A90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9805CB25-5FE1-4E61-B159-242A03E3AF9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9805CB25-5FE1-4E61-B159-242A03E3AF9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9805CB25-5FE1-4E61-B159-242A03E3AF9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9805CB25-5FE1-4E61-B159-242A03E3AF9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

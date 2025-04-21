@@ -12,4 +12,13 @@
       <ProjectReference Include="..\Core\Core.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="MaterialDesignThemes" Version="5.2.2-ci968" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Assets\Icons\logo.ico" />
+      <Resource Include="Assets\Icons\logo.ico" />
+    </ItemGroup>
+
 </Project>

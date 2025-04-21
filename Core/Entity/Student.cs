@@ -1,6 +1,6 @@
 namespace Core.Entity;
 
-public interface Student
+public class Student
 {
     
 }
