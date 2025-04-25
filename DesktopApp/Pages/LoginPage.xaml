@@ -14,16 +14,57 @@
         </LinearGradientBrush>
     </UserControl.Background>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <materialDesign:Card Grid.Column="1" 
-                             Margin="0 20 0 20"
+        <materialDesign:Card 
+                             Margin="30"
                              materialDesign:UniformCornerRadius="20"
-                             materialDesign:ElevationAssist.Elevation="Dp24"/>
+                             materialDesign:ElevationAssist.Elevation="Dp24"
+                             MaxWidth="600" MaxHeight="370" MinHeight="200" MinWidth="400">
+            <StackPanel Orientation="Vertical" Margin="20">
+                <TextBlock Text="Welcome to our program!" FontSize="18" FontFamily="Inter" Padding="20 20 0 0" FontWeight="SemiBold" Foreground="Aquamarine"/>
+                <TextBlock Text="Please log in your account " FontSize="16" FontFamily="Inter"
+                           FontWeight="SemiBold" Foreground="Aquamarine" Padding="20"/>
+                <DockPanel Margin="0 0 0 20">
+                    <materialDesign:PackIcon Kind="AccountSchool" VerticalAlignment="Center"
+                                             Width="30" Height="30" Foreground="Aquamarine"
+                                             Margin="0 0 10 0"/>
+                    <TextBox FontSize = "16" Padding="5 5 0 10" 
+                             materialDesign:HintAssist.HelperText = "Enter your email"
+                             materialDesign:HintAssist.Hint = "Email"
+                             materialDesign:HintAssist.Foreground="Aquamarine"
+                             Foreground="Aquamarine"
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                </DockPanel>
+                <DockPanel Margin="0 0 0 20">
+                    <materialDesign:PackIcon Kind="Lock" VerticalAlignment="Center"
+                                             Width="30" Height="30" Foreground="Aquamarine"
+                                             Margin="0 0 10 0"/>
+                    <PasswordBox 
+                        x:Name= "PasswordBox"
+                        FontSize="16" HorizontalAlignment="Stretch"
+                        materialDesign:HintAssist.HelperText = "At least 8 characters"
+                        materialDesign:HintAssist.Hint = "Password" Foreground="Aquamarine"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+                </DockPanel>
+                <WrapPanel HorizontalAlignment="Center">
+                    <Button materialDesign:ElevationAssist.Elevation="Dp7" Margin="0 20 10 0"
+                            Content="Log In" FontSize="16" FontFamily="Inter" Foreground="Aquamarine"
+                            Background="DimGray" BorderThickness="0" Padding="10 5"
+                            HorizontalAlignment="Right"
+                            HorizontalContentAlignment="Left" Width="200" Height="40"
+                            Style="{StaticResource MaterialDesignRaisedButton}"/>
+                    
+                    <Button materialDesign:ElevationAssist.Elevation="Dp7" Margin="10 20 0 0"
+                            Content="Sign In" FontSize="16" FontFamily="Inter" Foreground="Aquamarine"
+                            Padding="10 5"
+                            HorizontalAlignment="Right"
+                            HorizontalContentAlignment="Left" Width="200" Height="40"
+                            Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                </WrapPanel>
+
+                
+                    
+            </StackPanel>
+        </materialDesign:Card>
     </Grid>
 </UserControl>
