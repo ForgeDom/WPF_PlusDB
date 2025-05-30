@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="School Desktop App" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="Assets/Icons/logo.ico"
-        Background="{DynamicResource MaterialDesignDarkSeparatorBackground}">
+        Background="{DynamicResource MaterialDesignDarkSeparatorBackground}" Loaded="MainWindow_OnLoaded">
+        
         <Frame x:Name="MainWindowFrame"></Frame>
 </Window>

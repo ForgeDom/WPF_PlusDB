@@ -4,24 +4,22 @@ using DatabaseService.Models;
 
 namespace DatabaseService.Repository;
 
-public class AuthRepositoryImpl: AuthRepository
+public class AuthRepositoryImpl(DatabaseProvider databaseProvider) : AuthRepository
 {
-    private readonly DatabaseProvider _databaseProvider;
-
-    public AuthRepositoryImpl(DatabaseProvider databaseProvider)
+    [Obsolete("Obsolete")]
+    public override async Task<bool> RegisterAsync(string email, string password)
     {
-        _databaseProvider = databaseProvider;
-    }
-    public override Task<bool> RegisterAsync(string email, string password)
+        UserModel user = new UserModel(0, email, password);
+        var resultResponse = await databaseProvider.CreateUserAsync(user);
+        return resultResponse > 0;
+    }       
+    
+    [Obsolete("Obsolete")]
+    public override async Task<bool> LoginAsync(string email, string password)
     {
-        UserModel user = new UserModel(email, password);
-        var resultResponse = _databaseProvider.CreateUserAsync(user);
-        return Task.FromResult(resultResponse.Result == 1);
-    }
-
-    public override Task<bool> LoginAsync(string email, string password)
-    {
-        var user = _databaseProvider.GetUserAsync(password);
-        return Task.FromResult(user.Result?.password == password);
+        var user = await databaseProvider.GetUserAsync(email);
+        if (user != null && user.password == password)
+            return true;
+        return false;
     }
 }

@@ -14,57 +14,59 @@
         </LinearGradientBrush>
     </UserControl.Background>
     <Grid>
-        <materialDesign:Card 
-                             Margin="30"
+        
+        <materialDesign:Card  
+                             Margin="30" 
                              materialDesign:UniformCornerRadius="20"
-                             materialDesign:ElevationAssist.Elevation="Dp24"
-                             MaxWidth="600" MaxHeight="370" MinHeight="200" MinWidth="400">
+                             materialDesign:ElevationAssist.Elevation="Dp16"
+                             MaxWidth="600" MaxHeight="300" MinHeight="200" MinWidth="400">
             <StackPanel Orientation="Vertical" Margin="20">
-                <TextBlock Text="Welcome to our program!" FontSize="18" FontFamily="Inter" Padding="20 20 0 0" FontWeight="SemiBold" Foreground="Aquamarine"/>
-                <TextBlock Text="Please log in your account " FontSize="16" FontFamily="Inter"
-                           FontWeight="SemiBold" Foreground="Aquamarine" Padding="20"/>
-                <DockPanel Margin="0 0 0 20">
+                <TextBlock Text="Вітаю вас у програмі!" FontSize="18" Padding="0 10 0 10" 
+                           FontFamily="Inter" FontWeight="SemiBold" Foreground="Azure"/>
+                <TextBlock Text="Будь ласка, увійдіть в свій обліковий запис" FontSize="14" Padding="0 0 0 10" 
+                           FontFamily="Inter" FontWeight="Regular" Foreground="Azure"/>
+                <DockPanel Margin="0 20 0 20">
                     <materialDesign:PackIcon Kind="AccountSchool" VerticalAlignment="Center"
-                                             Width="30" Height="30" Foreground="Aquamarine"
-                                             Margin="0 0 10 0"/>
-                    <TextBox FontSize = "16" Padding="5 5 0 10" 
-                             materialDesign:HintAssist.HelperText = "Enter your email"
-                             materialDesign:HintAssist.Hint = "Email"
-                             materialDesign:HintAssist.Foreground="Aquamarine"
-                             Foreground="Aquamarine"
-                             Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                                             Height="30" Width="30" Foreground="Azure" Margin="0 0 10 0"/>
+                    <TextBox x:Name="LoginTextBox" FontSize="14" Padding="0 0 0 10"
+                             materialDesign:HintAssist.Hint="Email"
+                             Foreground="Azure"
+                             />
                 </DockPanel>
-                <DockPanel Margin="0 0 0 20">
+                <DockPanel Margin="0 20 0 10">
                     <materialDesign:PackIcon Kind="Lock" VerticalAlignment="Center"
-                                             Width="30" Height="30" Foreground="Aquamarine"
-                                             Margin="0 0 10 0"/>
-                    <PasswordBox 
-                        x:Name= "PasswordBox"
-                        FontSize="16" HorizontalAlignment="Stretch"
-                        materialDesign:HintAssist.HelperText = "At least 8 characters"
-                        materialDesign:HintAssist.Hint = "Password" Foreground="Aquamarine"
+                                             Height="30" Width="30" Foreground="Azure" Margin="0 0 10 0"/>
+                    <PasswordBox
+                        x:Name="PasswordBox"
+                        FontSize="14"
+                        HorizontalContentAlignment="Stretch"
+                        materialDesign:HintAssist.Hint="Password"
+                        Foreground="Azure"
                         materialDesign:TextFieldAssist.HasClearButton="True"
-                        Style="{StaticResource MaterialDesignOutlinedPasswordBox}"/>
+                    />
                 </DockPanel>
+                <Viewbox>
+                    
+                </Viewbox>
                 <WrapPanel HorizontalAlignment="Center">
-                    <Button materialDesign:ElevationAssist.Elevation="Dp7" Margin="0 20 10 0"
-                            Content="Log In" FontSize="16" FontFamily="Inter" Foreground="Aquamarine"
-                            Background="DimGray" BorderThickness="0" Padding="10 5"
+                    <Button materialDesign:ElevationAssist.Elevation="Dp7" Margin="0 20 10 0" 
+                            Content="Зареєструватись" 
+                            FontSize="14" 
+                            Height="40" Width="200"
                             HorizontalAlignment="Right"
-                            HorizontalContentAlignment="Left" Width="200" Height="40"
-                            Style="{StaticResource MaterialDesignRaisedButton}"/>
-                    
-                    <Button materialDesign:ElevationAssist.Elevation="Dp7" Margin="10 20 0 0"
-                            Content="Sign In" FontSize="16" FontFamily="Inter" Foreground="Aquamarine"
-                            Padding="10 5"
-                            HorizontalAlignment="Right"
-                            HorizontalContentAlignment="Left" Width="200" Height="40"
+                            Foreground="Azure" 
                             Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                    <Button materialDesign:ElevationAssist.Elevation="Dp7" Margin="10 20 0 0" 
+                            Content="Увійти" 
+                            FontSize="14" 
+                            Height="40" Width="200"
+                            HorizontalAlignment="Right"
+                            Foreground="Azure" 
+                            Click="OnLoginButtonClick"
+                            Style="{StaticResource MaterialDesignRaisedButton}"/>
                 </WrapPanel>
-
-                
-                    
             </StackPanel>
+            
         </materialDesign:Card>
     </Grid>
 </UserControl>

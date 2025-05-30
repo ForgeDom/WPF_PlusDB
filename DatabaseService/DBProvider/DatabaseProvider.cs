@@ -13,6 +13,29 @@ public class DatabaseProvider
     {
         _connectionString = connectionString;
     }
+    
+    public async Task<int> InsertMarkAndSubjectByUserLogin(string login, string subject, int mark)
+    {
+        await using var connection = new SqlConnection(_connectionString);
+        await connection.ExecuteAsync("USE School");
+        int result = await connection.ExecuteAsync(DbCommands.InsertMarkAndSubjectByUserLogin(login, subject, mark));
+        return result;
+    }
+
+    public async Task<IEnumerable<dynamic>> GetSubjectAndMarksByUserLogin(string login)
+    {
+        await using var connection = new SqlConnection(_connectionString);
+        await connection.ExecuteAsync("USE School");
+        var result = await connection.QueryAsync(DbCommands.GetSubjectAndMarksByUserLogin(login));
+        var enumerable = result.ToList();
+        if(enumerable.ToList().Count == 0)
+        {
+            return null;
+        }
+
+        return enumerable;
+    }
+        
     [Obsolete("Obsolete")]
     public async Task<int> CreateUserAsync(UserModel user)
     {
@@ -29,21 +52,37 @@ public class DatabaseProvider
         
         return user;
     }
+    
     [Obsolete("Obsolete")]
     public async Task InitializeDatabaseAsync()
     {
-        await using var connection = new SqlConnection(_connectionString);
-        await connection.OpenAsync();
-        await connection.ExecuteAsync(DbCommands.CreateDbCommandWithNotExist("School"));
-        await connection.ExecuteAsync(DbCommands.CreateTablesCommandIfNotExist());
+        try
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync();
+            await connection.ExecuteAsync(DbCommands.CreateDbCommandWithNotExists("School"));
+            await connection.ExecuteAsync(DbCommands.CreateTablesCommandIfNotExist());
+            await connection.ExecuteAsync(@"
+                IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Users' AND xtype='U')
+                CREATE TABLE Users (
+                    id INT PRIMARY KEY IDENTITY,
+                    login NVARCHAR(50) NOT NULL,
+                    password NVARCHAR(50) NOT NULL
+                )");
+        }
+        catch (SqlException e)
+        {
+            Console.WriteLine(e);
+            throw new Exception("Database initialization failed");
+        }
     }
-
+        
     [Obsolete("Obsolete")]
     public async Task ResetDatabaseAsync()
     {
         await using var connection = new SqlConnection(_connectionString);
         await connection.OpenAsync();
-        await connection.ExecuteAsync(DbCommands.DropTableCommands());
+        await connection.ExecuteAsync(DbCommands.DropTablesCommand());
         await connection.ExecuteAsync(DbCommands.CreateTablesCommandIfNotExist());
     }
 }
